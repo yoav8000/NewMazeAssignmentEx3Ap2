@@ -14,6 +14,13 @@ namespace NewMazeAssignmentEx3Ap2
             // Web API routes
             config.MapHttpAttributeRoutes();
 
+
+            config.Routes.MapHttpRoute(
+                name: "ContactApi",
+               routeTemplate: "api/{controller}/{mazeName}/{rows}/{cols}"
+          );
+
+
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",

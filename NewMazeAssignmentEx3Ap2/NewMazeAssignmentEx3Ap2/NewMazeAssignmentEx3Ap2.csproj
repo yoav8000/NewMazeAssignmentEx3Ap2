@@ -43,10 +43,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MazeGeneratorLib">
+      <HintPath>..\..\..\..\..\Desktop\יואב לימודים\שנה ב'\סמסטר ב'\מדמח\תכנות מתקדם 2\מטלות\מטלה 1\MazeGeneratorLib.dll</HintPath>
+    </Reference>
+    <Reference Include="MazeLib">
+      <HintPath>..\..\..\..\..\Desktop\יואב לימודים\שנה ב'\סמסטר ב'\מדמח\תכנות מתקדם 2\מטלות\מטלה 1\MazeLib.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SearchAlgorithmsLib">
+      <HintPath>..\..\..\..\..\Desktop\יואב לימודים\שנה ב'\סמסטר ב'\מדמח\תכנות מתקדם 2\מטלות\מטלה 1\הגשה תכנות מתקדם 2 תרגיל 1\ex1\src\SearchAlgorithmsLib\bin\Debug\SearchAlgorithmsLib.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -66,9 +78,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System.Net.Http.Formatting">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
@@ -81,17 +90,55 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.1.1.js" />
+    <Content Include="Scripts\jquery-3.1.1.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="Views\BootStrap\bootstrap-3.3.7-dist\css\bootstrap-theme.css" />
+    <Content Include="Views\BootStrap\bootstrap-3.3.7-dist\css\bootstrap-theme.min.css" />
+    <Content Include="Views\BootStrap\bootstrap-3.3.7-dist\css\bootstrap.css" />
+    <Content Include="Views\BootStrap\bootstrap-3.3.7-dist\css\bootstrap.min.css" />
+    <Content Include="Views\BootStrap\bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Views\BootStrap\bootstrap-3.3.7-dist\js\bootstrap.js" />
+    <Content Include="Views\BootStrap\bootstrap-3.3.7-dist\js\bootstrap.min.js" />
+    <Content Include="Views\BootStrap\bootstrap-3.3.7-dist\js\npm.js" />
+    <Content Include="Views\CssFiles\StyleSheet.css" />
+    <Content Include="Views\HtmlPages\RegistrationPage\Register.html" />
+    <Content Include="Views\HtmlPages\SinglePlayerGame\SinglePlayer.html" />
+    <Content Include="Views\HtmlPages\TheNavBar\NavBar.html" />
+    <Content Include="Views\Jquery\jquery-3.2.1.js" />
+    <Content Include="Views\Jquery\jquery-3.2.1.min.js" />
+    <Content Include="Views\Resources\destinationimage.PNG" />
+    <Content Include="Views\Resources\minionphoto.PNG" />
+    <Content Include="Views\Scripts\SinglePlayer.js" />
+    <Content Include="Views\Scripts\TheMazePlugin\MazeBoardPlugin.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\MazesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\IModel.cs" />
+    <Compile Include="Models\MazeManager\IModelManager.cs" />
+    <Compile Include="Models\MazeManager\ModelManager.cs" />
+    <Compile Include="Models\Model.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="Views\BootStrap\bootstrap-3.3.7-dist\css\bootstrap-theme.css.map" />
+    <Content Include="Views\BootStrap\bootstrap-3.3.7-dist\css\bootstrap-theme.min.css.map" />
+    <Content Include="Views\BootStrap\bootstrap-3.3.7-dist\css\bootstrap.css.map" />
+    <Content Include="Views\BootStrap\bootstrap-3.3.7-dist\css\bootstrap.min.css.map" />
+    <Content Include="Views\BootStrap\bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Views\BootStrap\bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Views\BootStrap\bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Views\BootStrap\bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.1.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -101,8 +148,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
