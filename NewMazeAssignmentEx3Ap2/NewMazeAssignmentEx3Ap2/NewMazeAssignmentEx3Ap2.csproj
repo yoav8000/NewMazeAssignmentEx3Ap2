@@ -103,7 +103,9 @@
     <Content Include="Views\BootStrap\bootstrap-3.3.7-dist\js\bootstrap.js" />
     <Content Include="Views\BootStrap\bootstrap-3.3.7-dist\js\bootstrap.min.js" />
     <Content Include="Views\BootStrap\bootstrap-3.3.7-dist\js\npm.js" />
+    <Content Include="Views\CssFiles\loader.css" />
     <Content Include="Views\CssFiles\StyleSheet.css" />
+    <Content Include="Views\HtmlPages\LoaderPage\Loader.html" />
     <Content Include="Views\HtmlPages\RegistrationPage\Register.html" />
     <Content Include="Views\HtmlPages\SinglePlayerGame\SinglePlayer.html" />
     <Content Include="Views\HtmlPages\TheNavBar\NavBar.html" />

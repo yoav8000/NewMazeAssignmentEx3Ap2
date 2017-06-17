@@ -42,5 +42,11 @@ namespace NewMazeAssignmentEx3Ap2.Models.MazeManager
         {
             return mazeModel.SinglePlayerMazes[mazeName];
         }
+
+        public string SolveMaze(string mazeName, string searchAlgorithm)
+        {
+           string result = mazeModel.SolveMaze(mazeName, searchAlgorithm);
+            return result;
+        }
     }
 }

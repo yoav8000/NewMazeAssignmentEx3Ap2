@@ -14,7 +14,8 @@ namespace NewMazeAssignmentEx3Ap2.Models.MazeManager
         Maze GetSinglePlayerMazeByName(string mazeName);
         void GenerateSinglePlayerMaze(string name, int rows, int cols);
         void DeleteMaze(string mazeName);
-
+        string SolveMaze(string mazeName, string searchAlgorithm);
+        
 
     }
 }

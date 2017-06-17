@@ -20,6 +20,10 @@ namespace NewMazeAssignmentEx3Ap2
                routeTemplate: "api/{controller}/{mazeName}/{rows}/{cols}"
           );
 
+            config.Routes.MapHttpRoute(
+               name: "ContactApi1",
+              routeTemplate: "api/{controller}/{mazeName}/{searchAlgorithm}"
+         );
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

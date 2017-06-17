@@ -29,6 +29,15 @@ namespace NewMazeAssignmentEx3Ap2.Controllers
             return (string)mazeManager.GetSinglePlayerMazeByName(mazeName).ToJSON();
         }
 
+        [HttpGet]
+        // GET: api/Mazes/{mazeName}/{searchAlgorithm}
+        public string Get(string mazeName,string searchAlgorithm)
+        {
+          //  mazeManager.GenerateSinglePlayerMaze(mazeName, rows, cols);
+            return mazeManager.SolveMaze(mazeName,searchAlgorithm);
+        }
+
+
 
         // GET: api/Mazes/5
         public string Get(int id)

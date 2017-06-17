@@ -7,11 +7,12 @@
     <link href="../../BootStrap/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="../../Scripts/SinglePlayer.js"></script>
     <script src="../../Scripts/TheMazePlugin/MazeBoardPlugin.js"></script>
+    <link href="../../CssFiles/loader.css" rel="stylesheet" />
 </head>
 <body>
     <img src="../../Resources/minionphoto.PNG" id="playerImage" width="0" height="0" alt="playerImage" />
-    <img src="../../Resources/destinationimage.PNG" Z id="destinationImage" width="0" height="0" alt="destinationImage" />
-
+    <img src="../../Resources/destinationimage.PNG"  id="destinationImage" width="0" height="0" alt="destinationImage" />
+  
 
     <div class="container body-content">
         <h2>Single Player Game</h2><hr />
@@ -43,7 +44,7 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">Search Algo</label>
                 <div class="col-sm-10">
-                    <select class="form-control">
+                    <select id="searchAlgorithm" class="form-control">
                         <option value="bfs">Bfs</option>
                         <option value="dfs">Dfs</option>
                     </select>
@@ -59,11 +60,10 @@
 
         <div class="col-sm-8 text-center">
             <canvas id="mazeCanvas" tabindex="1" style="border:2px black solid" class="maze-board" width="500" height="500"></canvas>
-
-         
+          
         </div>
     </div>
-    
+    <div class="loader" id="loader" hidden></div>
 
 </body>
 </html>

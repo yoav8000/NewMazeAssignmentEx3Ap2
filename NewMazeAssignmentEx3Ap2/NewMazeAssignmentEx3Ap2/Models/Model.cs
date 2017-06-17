@@ -307,7 +307,6 @@ namespace NewMazeAssignmentEx3Ap2.Models
             SolutionAdapter solutionAdapter = new SolutionAdapter(solution, mazeName);
             MazeSolutions[mazeName] = solution;
             return solutionAdapter.ToJson();
-
         }
 
 
