@@ -8,13 +8,26 @@
     <script src="../../Scripts/SinglePlayer.js"></script>
     <script src="../../Scripts/TheMazePlugin/MazeBoardPlugin.js"></script>
     <link href="../../CssFiles/loader.css" rel="stylesheet" />
+
 </head>
 <body>
     <img src="../../Resources/minionphoto.PNG" id="playerImage" width="0" height="0" alt="playerImage" />
     <img src="../../Resources/destinationimage.PNG"  id="destinationImage" width="0" height="0" alt="destinationImage" />
   
+    
+    
+
 
     <div class="container body-content">
+       <div id="navbar"> </div>
+
+        <script type="text/javascript">
+            $(function () {
+                $("#navbar").load("../TheNavBar/NavBar.html");
+            });
+        </script>
+
+
         <h2>Single Player Game</h2><hr />
         <div class="col-sm-4 form-horizontal">
             <div class="form-group">

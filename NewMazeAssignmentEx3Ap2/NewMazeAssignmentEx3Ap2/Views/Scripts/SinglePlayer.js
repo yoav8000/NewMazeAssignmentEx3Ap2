@@ -6,8 +6,14 @@ var finishedGame = 0;
 var mazeBoard;
 var enabled = true;
 
+    
+
+
+
 
 jQuery(function ($) {
+
+
     $(startNewGame).click(function () {
         if (enabled) {
             var apiUrl = "/api/Mazes";
@@ -19,7 +25,6 @@ jQuery(function ($) {
             if (mazeBoard != undefined && mazeName != mazeBoard.data("mazeName")){
                 var tempCanvas = document.getElementById("mazeCanvas");
                 $("mazeCanvas").clearCanvas(tempCanvas);
-                enabled = true;
                 
             }
 
@@ -61,16 +66,16 @@ jQuery(function ($) {
                        
                     });
             } else {
-                var tempCanvas = document.getElementById("mazeCanvas");
-                if (mazeName == mazeBoard.data("mazeName")) {
-                    mazeBoard = $("#mazeCanvas").drawMaze(tempCanvas);
-                    $("#mazeCanvas").focus();
+
+                mazeBoard.restartImagesLocation(document.getElementById("mazeCanvas"));
+                $("#mazeCanvas").focus();
                     enabled = true;
                     finishedGame = 0;
+               
                 } 
                 $("#loader").hide();
             }
-        }
+        
     });
 
 

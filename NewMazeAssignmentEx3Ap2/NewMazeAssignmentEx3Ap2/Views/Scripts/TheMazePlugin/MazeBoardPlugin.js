@@ -39,6 +39,15 @@
                 }
             }
         }
+        $(this).restartImagesLocation(canvas);
+        return this;
+    }
+
+
+
+
+    $.fn.restartImagesLocation = function (canvas) {
+
         if ($(this).data("currentRowPos") != $(this).data("startRow") || $(this).data("currentColPos") != $(this).data("startCol")) {
 
             var tempContext = canvas.getContext("2d");
@@ -46,9 +55,9 @@
                 * $(this).data("currentRowPos"), $(this).data("cellWidth"), $(this).data("cellHeight"));
 
 
-            $(this).data("currentColPos",$(this).data("startCol"));
-            $(this).data("currentRowPos",$(this).data("startRow"));
-         
+            $(this).data("currentColPos", $(this).data("startCol"));
+            $(this).data("currentRowPos", $(this).data("startRow"));
+
         }
         context = $(this).data("canavas").getContext("2d");
         context.drawImage($(this).data("playerImage"), $(this).data("cellWidth") * $(this).data("startCol"),
@@ -56,9 +65,11 @@
         context.drawImage($(this).data("destinationImage"), $(this).data("cellWidth") * $(this).data("exitCol"), $(this).data("cellHeight")
             * $(this).data("exitRow"), $(this).data("cellWidth"), $(this).data("cellHeight"));
         $(this).data("IsEnabled", true);
-        return this;
-    }
 
+        }
+
+
+    
 
     $.fn.clearCanvas = function (canvas) {
 
@@ -148,5 +159,7 @@
         context.drawImage(myPlayerImage, cellWidth * (currentColPos), cellHeight * currentRowPos, cellWidth, cellHeight);
         $(this).data("currentRowPos", currentRowPos);
     }
+
+
 
 })(jQuery);
