@@ -48,3 +48,10 @@ C:\Users\yoav gomberg\Source\Repos\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3A
 C:\Users\yoav gomberg\Source\Repos\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\bin\SearchAlgorithmsLib.dll.config
 C:\Users\yoav gomberg\Source\Repos\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\bin\Academy.Collections.pdb
 C:\Users\yoav gomberg\Source\Repos\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\bin\Academy.Collections.xml
+C:\Users\yoav gomberg\Source\Repos\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\bin\EntityFramework.dll
+C:\Users\yoav gomberg\Source\Repos\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\bin\EntityFramework.SqlServer.dll
+C:\Users\yoav gomberg\Source\Repos\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\bin\EntityFramework.xml
+C:\Users\yoav gomberg\Source\Repos\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\bin\EntityFramework.SqlServer.xml
+C:\Users\yoav gomberg\Source\Repos\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\obj\Debug\NewMazeAssignmentEx3Ap2.Migrations.Initial.resources
+C:\Users\yoav gomberg\Source\Repos\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\obj\Debug\NewMazeAssignmentEx3Ap2.csproj.GenerateResource.Cache
+C:\Users\yoav gomberg\Source\Repos\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\obj\Debug\NewMazeAssignmentEx3Ap2.Migrations.Initial1.resources

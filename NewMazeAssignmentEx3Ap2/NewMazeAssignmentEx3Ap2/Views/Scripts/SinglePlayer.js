@@ -57,7 +57,9 @@ jQuery(function ($) {
                             mazeArray[i] = mazeRow;
                             mazeRow = [];
                         }
+
                         mazeBoard = $("#mazeCanvas").drawMaze(canvas, id, mazeArray, mazeName, rowsAmmount, colsAmmount, startPoint.Row, startPoint.Col, endPoint.Row, endPoint.Col, playerImage, destImage);
+                       
                         $("#loader").hide();
 
                         $("#mazeCanvas").focus();
@@ -140,8 +142,8 @@ jQuery(function ($) {
             var apiUrl = "/api/Mazes";
 
             var tempCanvas = document.getElementById("mazeCanvas");
-                mazeBoard = $("#mazeCanvas").drawMaze(tempCanvas);
-                  
+                //mazeBoard = $("#mazeCanvas").drawMaze(tempCanvas);
+            mazeBoard.restartImagesLocation(tempCanvas);
 
             // ajax request.
             $("#loader").show();

@@ -15,7 +15,7 @@
     color: black;
 }
 
-#RegisterInput {
+input.RegisterInput {
     padding: 10px;
     font-size: inherit;
     margin-bottom: 25px;

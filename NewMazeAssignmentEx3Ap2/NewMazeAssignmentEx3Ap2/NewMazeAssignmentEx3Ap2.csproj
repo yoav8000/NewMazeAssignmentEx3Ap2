@@ -43,6 +43,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="MazeGeneratorLib">
       <HintPath>..\..\..\..\..\Desktop\יואב לימודים\שנה ב'\סמסטר ב'\מדמח\תכנות מתקדם 2\מטלות\מטלה 1\MazeGeneratorLib.dll</HintPath>
     </Reference>
@@ -95,6 +101,8 @@
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="Scripts\knockout-3.4.2.debug.js" />
+    <Content Include="Scripts\knockout-3.4.2.js" />
     <Content Include="Views\BootStrap\bootstrap-3.3.7-dist\css\bootstrap-theme.css" />
     <Content Include="Views\BootStrap\bootstrap-3.3.7-dist\css\bootstrap-theme.min.css" />
     <Content Include="Views\BootStrap\bootstrap-3.3.7-dist\css\bootstrap.css" />
@@ -113,6 +121,7 @@
     <Content Include="Views\Jquery\jquery-3.2.1.min.js" />
     <Content Include="Views\Resources\destinationimage.PNG" />
     <Content Include="Views\Resources\minionphoto.PNG" />
+    <Content Include="Views\Scripts\Registration.js" />
     <Content Include="Views\Scripts\SinglePlayer.js" />
     <Content Include="Views\Scripts\TheMazePlugin\MazeBoardPlugin.js" />
     <Content Include="Web.config" />
@@ -120,13 +129,25 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\MazesController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706181414442_Initial.cs" />
+    <Compile Include="Migrations\201706181414442_Initial.Designer.cs">
+      <DependentUpon>201706181414442_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706181429340_Initial1.cs" />
+    <Compile Include="Migrations\201706181429340_Initial1.Designer.cs">
+      <DependentUpon>201706181429340_Initial1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IModel.cs" />
     <Compile Include="Models\MazeManager\IModelManager.cs" />
     <Compile Include="Models\MazeManager\ModelManager.cs" />
     <Compile Include="Models\Model.cs" />
+    <Compile Include="Models\NewMazeAssignmentEx3Ap2Context.cs" />
+    <Compile Include="Models\UserModel\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +171,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201706181414442_Initial.resx">
+      <DependentUpon>201706181414442_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706181429340_Initial1.resx">
+      <DependentUpon>201706181429340_Initial1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
