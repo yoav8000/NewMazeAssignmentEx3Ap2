@@ -31,11 +31,11 @@ var ViewModel = function () {
     }
 
 
-    self.checkIfUserNameExis = function () {
-        var tempUser = ko.utils.arrayFirst(self.users(), function (tempUser) {
-            return user.userName == tempUser.userName;
+    self.checkIfUserNameExis = function (user) {
+        var checkUser = ko.utils.arrayFirst(self.users(), function (eachUser) {
+            return user.Name == eachUser.Name;
         });
-        if (tempUser != null) {
+        if (checkUser != null) {
             alert("user name already exist in the system");
         }
     }
@@ -58,19 +58,20 @@ var ViewModel = function () {
         usersUri += "/" + tempUserName;
 
 
-        self.checkIfUserNameExis();
+        self.checkIfUserNameExis(user);
 
-       
-          
-                $.post(usersUri, user).done(function (item) {
-                    self.users.push(item);
-                    sessionStorage.setItem("userName", user.userName);
-                    //     window.location.replace("HomePage.html");
-                });
 
-       
+
+        $.post(usersUri, user).done(function (item) {
+            self.users.push(item);
+            sessionStorage.setItem("userName", user.userName);
+            //     window.location.replace("HomePage.html");
+        });
+
+
     }
 
-
+    getAllUsers();
+    var x = 2
 }
 ko.applyBindings(new ViewModel()); // sets up the data binding
