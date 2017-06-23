@@ -16,68 +16,86 @@ jQuery(function ($) {
 
     $(startNewGame).click(function () {
         if (enabled) {
-            var apiUrl = "/api/Mazes";
 
-            // ajax call.
-            $("#loader").show();
-            mazeName = $("#mazeName").val();
 
-            if (mazeBoard != undefined && mazeName != mazeBoard.data("mazeName")){
-                var tempCanvas = document.getElementById("mazeCanvas");
-                $("mazeCanvas").clearCanvas(tempCanvas);
-                
+            var fillFieldsFlag = 0;
+            if ($("#rows").val() == "") {
+                fillFieldsFlag = 1;
+                alert("Please enter rows")
+
             }
 
-            if (  mazeBoard == undefined  ||  mazeName != mazeBoard.data("mazeName")) {
-                rowsAmmount = $("#rows").val();
-                colsAmmount = $("#cols").val();
-                $.getJSON(apiUrl + "/" + mazeName + "/" + rowsAmmount + "/" + colsAmmount)
+            if ($("#cols").val() == "") {
+                fillFieldsFlag = 1;
+                alert("Please enter cols")
+            }
+            if ($("#mazeName").val() == "") {
+                fillFieldsFlag = 1;
+                alert("Please enter a name for the maze.")
+            }
+            if (!fillFieldsFlag) {
+                var apiUrl = "/api/Mazes";
 
-                    // when done with the ajax call.
-                    .done(function (maze) {
-                        // get information from the object returned.
-                        var jsonObject = JSON.parse(maze);
-                        var mazeString = jsonObject.Maze;
-                        var startPoint = jsonObject.Start;
-                        var startRow = startPoint.Row;
-                        var startCol = startPoint.Col;
-                        var endPoint = jsonObject.End;
-                        var endRow = endPoint.Row;
-                        var endCol = endPoint.Col;
-                        var id = "mazeCanvas";
-                        var canvas = document.getElementById("mazeCanvas");
-                        var playerImage = document.getElementById("playerImage");
-                        var destImage = document.getElementById("destinationImage");
-                        var mazeArray = [];
-                        var mazeRow = [];
-                        for (var i = 0; i < rowsAmmount; ++i) {
-                            for (var j = 0; j < colsAmmount; ++j) {
-                                mazeRow[j] = mazeString[i * rowsAmmount + j];
+                // ajax call.
+                $("#loader").show();
+                mazeName = $("#mazeName").val();
+
+                if (mazeBoard != undefined && mazeName != mazeBoard.data("mazeName")) {
+                    var tempCanvas = document.getElementById("mazeCanvas");
+                    $("mazeCanvas").clearCanvas(tempCanvas);
+
+                }
+
+                if (mazeBoard == undefined || mazeName != mazeBoard.data("mazeName")) {
+                    rowsAmmount = $("#rows").val();
+                    colsAmmount = $("#cols").val();
+                    $.getJSON(apiUrl + "/" + mazeName + "/" + rowsAmmount + "/" + colsAmmount)
+
+                        // when done with the ajax call.
+                        .done(function (maze) {
+                            // get information from the object returned.
+                            var jsonObject = JSON.parse(maze);
+                            var mazeString = jsonObject.Maze;
+                            var startPoint = jsonObject.Start;
+                            var startRow = startPoint.Row;
+                            var startCol = startPoint.Col;
+                            var endPoint = jsonObject.End;
+                            var endRow = endPoint.Row;
+                            var endCol = endPoint.Col;
+                            var id = "mazeCanvas";
+                            var canvas = document.getElementById("mazeCanvas");
+                            var playerImage = document.getElementById("playerImage");
+                            var destImage = document.getElementById("destinationImage");
+                            var mazeArray = [];
+                            var mazeRow = [];
+                            for (var i = 0; i < rowsAmmount; ++i) {
+                                for (var j = 0; j < colsAmmount; ++j) {
+                                    mazeRow[j] = mazeString[i * rowsAmmount + j];
+                                }
+                                mazeArray[i] = mazeRow;
+                                mazeRow = [];
                             }
-                            mazeArray[i] = mazeRow;
-                            mazeRow = [];
-                        }
 
-                        mazeBoard = $("#mazeCanvas").drawMaze(canvas, id, mazeArray, mazeName, rowsAmmount, colsAmmount, startPoint.Row, startPoint.Col, endPoint.Row, endPoint.Col, playerImage, destImage);
-                       
-                        $("#loader").hide();
+                            mazeBoard = $("#mazeCanvas").drawMaze(canvas, id, mazeArray, mazeName, rowsAmmount, colsAmmount, startPoint.Row, startPoint.Col, endPoint.Row, endPoint.Col, playerImage, destImage);
 
-                        $("#mazeCanvas").focus();
-                        enabled = true;
-                        finishedGame = 0;
-                       
-                    });
-            } else {
+                            $("#loader").hide();
 
-                mazeBoard.restartImagesLocation(document.getElementById("mazeCanvas"));
-                $("#mazeCanvas").focus();
+                            $("#mazeCanvas").focus();
+                            enabled = true;
+                            finishedGame = 0;
+
+                        });
+                } else {
+
+                    mazeBoard.restartImagesLocation(document.getElementById("mazeCanvas"));
+                    $("#mazeCanvas").focus();
                     enabled = true;
                     finishedGame = 0;
-               
-                } 
-                $("#loader").hide();
+                    $("#loader").hide();
+                }
+
             }
-        
+        }
     });
 
 
@@ -127,7 +145,8 @@ jQuery(function ($) {
             if (mazeBoard.data("currentRowPos") == mazeBoard.data("exitRow") && mazeBoard.data("currentColPos") == mazeBoard.data("exitCol")) {
                 mazeBoard.data("IsEnabled", false);
                 if (finishedGame == 0) {
-                    alert("Congratulations! you have reached the destination!");
+                    setTimeout(function () { alert("Congratulations! you have reached the destination!"); }, 5);
+                    //alert("Congratulations! you have reached the destination!");
                     finishedGame = 1;
                 }
             }

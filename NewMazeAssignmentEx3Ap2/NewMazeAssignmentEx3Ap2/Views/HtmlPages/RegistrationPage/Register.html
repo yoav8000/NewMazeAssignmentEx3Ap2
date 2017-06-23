@@ -4,7 +4,15 @@
     <meta charset="utf-8" />
     <title>Registration Form</title>
     <link href="../../CssFiles/StyleSheet.css" rel="stylesheet" media="all" />
-  
+    <script>
+        if (sessionStorage.getItem("userName") != null) {
+            sessionStorage.clear();
+            window.location.replace("../HomePage/HomePage.html");
+        }
+
+
+    </script>
+
 </head>
 <body id="RegistartPagebody">
     <form id="RegisterForm"   data-bind="submit: addUser">>
@@ -13,7 +21,7 @@
         <input id="password" class="RegisterInput" type="password" placeholder="Password" data-bind="value:password" name="password" autocomplete="off" required />
         <input id="confirmPassword" class="RegisterInput" type="password" placeholder="Confirm Password" name="confirmPassword" autocomplete="off" required />
         <input id="email" class="RegisterInput" type="email" placeholder="Email" name="email" data-bind="value:email"  autocomplete="on" required />
-        <button  type="submit" class="btn btn-default">Submit</button>
+        <button id="RegisterButton" type="submit" class="RegisterInput">Submit</button>
     
         <ul class="list-unstyled" data-bind="foreach: users">
             <li> <span data-bind="text: Name" ></span></li>

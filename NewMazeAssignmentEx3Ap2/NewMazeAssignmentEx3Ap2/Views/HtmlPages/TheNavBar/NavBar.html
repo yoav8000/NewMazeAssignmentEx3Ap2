@@ -26,11 +26,27 @@
                 <li><a href="#"> User Rangkings </a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a id="register" href="/Views//Register//Register.html"><span class="glyphicon glyphicon-user"></span> Register</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a id="register"  href="../RegistrationPage/Register.html"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+                <li><a href="#" id ="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             </ul>
         </div>
     </nav>
 
+    <script src="../../Jquery/jquery-3.2.1.min.js"></script>
+        <script src="../../Jquery/jquery-3.2.1.js"></script>
+    <script>
+        $(function () {
+            if (sessionStorage.getItem("userName") != null) {
+                document.getElementById("register").innerHTML = "Hello " + sessionStorage.getItem("userName");
+                document.getElementById("register").href = "#";
+            }
+            if (sessionStorage.getItem("userName") != null) {
+                document.getElementById("login").innerHTML = "Log Off";
+                document.getElementById("login").href = "../RegistrationPage/Register.html";
+               
+
+            } 
+        });
+    </script>
 </body>
 </html>

@@ -23,3 +23,12 @@ input.RegisterInput {
     border: 2px solid steelblue;
     display: block;
 }
+
+#RegisterButton {
+    padding: 10px;
+    font-size: inherit;
+    margin-bottom: 25px;
+    width: 108%;
+    border: 2px solid steelblue;
+    display: block;
+}

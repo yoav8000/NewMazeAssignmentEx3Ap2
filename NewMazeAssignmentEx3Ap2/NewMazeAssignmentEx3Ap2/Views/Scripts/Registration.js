@@ -30,18 +30,7 @@ var ViewModel = function () {
         });
     }
 
-
-    self.checkIfUserNameExis = function (user) {
-        var checkUser = ko.utils.arrayFirst(self.users(), function (eachUser) {
-            return user.Name == eachUser.Name;
-        });
-        if (checkUser != null) {
-            alert("user name already exist in the system");
-        }
-    }
-
-
-
+   
     self.addUser = function () {
         var usersUri = "/api/Users";
 
@@ -58,20 +47,19 @@ var ViewModel = function () {
         usersUri += "/" + tempUserName;
 
 
-        self.checkIfUserNameExis(user);
-
-
-
         $.post(usersUri, user).done(function (item) {
             self.users.push(item);
-            sessionStorage.setItem("userName", user.userName);
-            //     window.location.replace("HomePage.html");
-        });
-
-
+            sessionStorage.setItem("userName", item.Name);
+            window.location.replace("../HomePage/HomePage.html");
+        })
+            .fail(function (xhr) {
+                if (409 == xhr.status) {
+                    alert("The user name is already taken,\nplease choose another one.");
+                } else {
+                    alert("ERROR: something went wrong in connecting to the server.");
+                }
+            });
     }
 
-    getAllUsers();
-    var x = 2
 }
 ko.applyBindings(new ViewModel()); // sets up the data binding

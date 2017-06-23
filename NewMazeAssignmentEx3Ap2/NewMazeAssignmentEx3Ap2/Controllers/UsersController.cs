@@ -33,7 +33,7 @@ namespace NewMazeAssignmentEx3Ap2.Controllers
             User user = await db.Users.FindAsync(id);
             if (user == null)
             {
-                return NotFound();
+                return Ok("user wasn't in db");
             }
 
             return Ok(user);
@@ -54,12 +54,12 @@ namespace NewMazeAssignmentEx3Ap2.Controllers
             User user = await db.Users.FindAsync(password);
             if (user == null)
             {
-                return NotFound();
+                return Ok("user wasn't in db");
             }
 
             if (user.Password != encryptedPassword)
             {
-                return BadRequest();
+                return Ok("incorrect password");
             }
             else
             {
