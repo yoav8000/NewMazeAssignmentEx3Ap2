@@ -19,10 +19,7 @@ namespace NewMazeAssignmentEx3Ap2.Models
         private SearchAlgorithmFactory<Position> algorithmFactory;
         private Dictionary<string, Maze> singlePlayerMazes;
         private Dictionary<string, Maze> multiPlayerMazes;
-        // private Dictionary<string, MazeGame> joinableMazes;
-        // private IController icontroller;
-        //  private Dictionary<string, MazeGame> activeMultiPlayerMazes;
-        //  private Dictionary<Player, MazeGame> playersAndGames;
+        private Dictionary<string, Maze> joinableMazes;
 
 
 
@@ -39,32 +36,9 @@ namespace NewMazeAssignmentEx3Ap2.Models
             this.singlePlayerMazes = new Dictionary<string, Maze>();
             this.mazeSolutions = new Dictionary<string, Solution<Position>>();
             this.multiPlayerMazes = new Dictionary<string, Maze>();
-            //       this.joinableMazes = new Dictionary<string, MazeGame>();
-            //      this.activeMultiPlayerMazes = new Dictionary<string, MazeGame>();
-            //     this.playersAndGames = new Dictionary<Player, MazeGame>();
+            this.joinableMazes = new Dictionary<string, Maze>();
 
         }
-
-        /// <summary>
-        /// Gets or sets the i controller.
-        /// </summary>
-        /// <value>
-        /// The i controller.
-        /// </value>
-        /// 
-        /*
-        public IController IController
-        {
-            get
-            {
-                return this.icontroller;
-            }
-            set
-            {
-                this.icontroller = value;
-            }
-        }
-        */
 
 
         /// <summary>
@@ -88,30 +62,14 @@ namespace NewMazeAssignmentEx3Ap2.Models
         /// The joinable mazes.
         /// </value>
         /// 
-        /*
-        public Dictionary<string, MazeGame> JoinableMazes
+
+        public Dictionary<string, Maze> JoinableMazes
         {
             get
             {
                 return this.joinableMazes;
             }
         }
-        */
-        /// <summary>
-        /// Gets the active multi player mazes.
-        /// </summary>
-        /// <value>
-        /// The active multi player mazes.
-        /// </value>
-        /*
-        public Dictionary<string, MazeGame> ActiveMultiPlayerMazes
-        {
-            get
-            {
-                return this.activeMultiPlayerMazes;
-            }
-        }
-        */
 
 
         /// <summary>
@@ -142,21 +100,7 @@ namespace NewMazeAssignmentEx3Ap2.Models
             }
         }
 
-        /// <summary>
-        /// Gets the players and games.
-        /// </summary>
-        /// <value>
-        /// The players and games.
-        /// </value>
-        /*
-        public Dictionary<Player, MazeGame> PlayersAndGames
-        {
-            get
-            {
-                return this.playersAndGames;
-            }
-        }
-        */
+
         /// <summary>
         /// Gets the maze generator.
         /// </summary>
@@ -198,7 +142,12 @@ namespace NewMazeAssignmentEx3Ap2.Models
         /// <returns></returns>
         private Maze GenerateMaze(string name, int rows, int cols)
         {
-            Maze maze = this.mazeGenerator.Generate(rows, cols);
+            Maze maze;
+            do
+            {
+                maze = this.mazeGenerator.Generate(rows, cols);
+            } while (maze.InitialPos.Row == maze.GoalPos.Row && maze.GoalPos.Col == maze.InitialPos.Col);
+
             return maze;
         }
 
@@ -237,12 +186,12 @@ namespace NewMazeAssignmentEx3Ap2.Models
         {
 
             bool flag = false;
-            /*
+
             if (joinableMazes.ContainsKey(name))
             {
                 return "Error: there is a maze with the same name";
             }
-            */
+
             Maze maze = null;
             int playersCapacity = 2;
             while (flag == false)
@@ -255,15 +204,7 @@ namespace NewMazeAssignmentEx3Ap2.Models
             }
             maze.Name = name;
             MultiPlayerMazes[name] = maze;
-            /*
-            MazeGame game = new MazeGame(name, maze, playersCapacity);
-            JoinableMazes[name] = game;
-            player.NeedToWait = true;
-           
-            game.AddPlayer(player);//the player needs to wait for another player to join the game.
-
-            player.MazeName = game.MazeName;
-    */
+            JoinableMazes[name] = maze;
             return maze.ToJSON();
 
         }
@@ -321,20 +262,17 @@ namespace NewMazeAssignmentEx3Ap2.Models
             return AlgorithmFactory.GetSearchAlgorithm(algorithmIndicator);
         }
 
-        public List<string> GetNamesOfJoinableMazes()
-        {
-            throw new NotImplementedException();
-        }
 
-        /*
+
+
         public List<string> GetNamesOfJoinableMazes()
         {
 
-       //     List<string> mazesList = new List<string>(JoinableMazes.Keys.ToList());
-         //   return mazesList;
+            List<string> mazesList = new List<string>(JoinableMazes.Keys.ToList());
+            return mazesList;
 
         }
-        */
+
 
 
         /// <summary>
@@ -345,8 +283,8 @@ namespace NewMazeAssignmentEx3Ap2.Models
         /// <returns></returns>
         /// <exception cref="System.Exception"></exception>
         /// 
-        /*
-        public Maze JoinMaze(string mazeName, Player player)
+
+        public Maze JoinMaze(string mazeName)
         {
 
             if (!joinableMazes.ContainsKey(mazeName))
@@ -356,19 +294,9 @@ namespace NewMazeAssignmentEx3Ap2.Models
 
             try
             {
-                MazeGame game = JoinableMazes[mazeName];
-                game.AddPlayer(player);
-                player.MazeName = game.MazeName;
-
-                if (game.GameCapacity == game.Players.Count)
-                {
-                    ActiveMultiPlayerMazes[mazeName] = game;
-                    joinableMazes.Remove(mazeName);
-                    ReleasePlayerFromWaitingMode(game);
-                    //game.NotifyOtherPlayers(game.Maze.ToJSON(), player);
-                    //game.NotifyAllPlayers("The Game Has Started");
-                }
-                return game.Maze;
+                Maze maze = JoinableMazes[mazeName];
+                joinableMazes.Remove(mazeName);
+                return maze;
 
             }
             catch (Exception exception)
@@ -377,19 +305,8 @@ namespace NewMazeAssignmentEx3Ap2.Models
             }
 
         }
-        
 
-        private void ReleasePlayerFromWaitingMode(MazeGame game)//////////////////////////added a change.
-        {
-            foreach (Player p in game.Players)
-            {
 
-                PlayersAndGames[p] = game;
-                p.NeedToWait = false;
-            }
-
-        }
-        */
 
         /// <summary>
         /// Plays the specified arguments.
@@ -397,41 +314,7 @@ namespace NewMazeAssignmentEx3Ap2.Models
         /// <param name="args">The arguments.</param>
         /// <param name="player">The player.</param>
         /// <returns></returns>
-        /* 
-        public string Play(string[] args, Player player)
-        {
-
-            string direction = args[0];
-            if (player.MazeName == null)
-            {
-                return "Error: you are not a part of an active game";
-
-            }
-            string mazeName = player.MazeName;
-            if (!ActiveMultiPlayerMazes.ContainsKey(mazeName))
-            {
-                return $"Error: there is no such maze with the name {mazeName}";
-            }
-            if (PlayersAndGames[player] == null)
-            {
-                return ("Error: you are not a part of a game at this point ");
-            }
-            MazeGame game = ActiveMultiPlayerMazes[mazeName];
-            JObject jobject = new JObject();
-            jobject["Name"] = game.MazeName;
-            jobject["Direction"] = direction;
-            game.NotifyOtherPlayers(jobject.ToString(), player);
-            return null;
-
-        }
-        */
-        /// <summary>
-        /// Closes the specified maze name.
-        /// </summary>
-        /// <param name="mazeName">Name of the maze.</param>
-        /// <param name="player">The player.</param>
-        /// <returns></returns>
-        /// 
+        
         /*
         public string Close(string mazeName, Player player)
         {
@@ -452,20 +335,7 @@ namespace NewMazeAssignmentEx3Ap2.Models
             return "";
 
         }
-        */
-        /// <summary>
-        /// Removes the players from players and games.
-        /// </summary>
-        /// <param name="mazeName">Name of the maze.</param>
-        /*
-        private void RemovePlayersFromPlayersAndGames(string mazeName)
-        {
-            MazeGame game = ActiveMultiPlayerMazes[mazeName];
-            foreach (Player p in game.Players)
-            {
-                PlayersAndGames.Remove(p);
-            }
-        }
+        
         */
     }
 }

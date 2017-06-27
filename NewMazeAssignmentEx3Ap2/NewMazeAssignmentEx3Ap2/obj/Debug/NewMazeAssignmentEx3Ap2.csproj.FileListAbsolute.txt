@@ -55,3 +55,15 @@ C:\Users\yoav gomberg\Source\Repos\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3A
 C:\Users\yoav gomberg\Source\Repos\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\obj\Debug\NewMazeAssignmentEx3Ap2.dll
 C:\Users\yoav gomberg\Source\Repos\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\obj\Debug\NewMazeAssignmentEx3Ap2.pdb
 C:\Users\yoav gomberg\Source\Repos\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\obj\Debug\NewMazeAssignmentEx3Ap2.csprojResolveAssemblyReference.cache
+C:\Users\yoav gomberg\Source\Repos\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\yoav gomberg\Source\Repos\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\Users\yoav gomberg\Source\Repos\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\bin\Microsoft.Owin.dll
+C:\Users\yoav gomberg\Source\Repos\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\yoav gomberg\Source\Repos\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\bin\Microsoft.Owin.Security.dll
+C:\Users\yoav gomberg\Source\Repos\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\yoav gomberg\Source\Repos\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\bin\Owin.dll
+C:\Users\yoav gomberg\Source\Repos\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\Users\yoav gomberg\Source\Repos\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\Users\yoav gomberg\Source\Repos\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\bin\Microsoft.Owin.xml
+C:\Users\yoav gomberg\Source\Repos\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\yoav gomberg\Source\Repos\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\NewMazeAssignmentEx3Ap2\bin\Microsoft.Owin.Security.xml

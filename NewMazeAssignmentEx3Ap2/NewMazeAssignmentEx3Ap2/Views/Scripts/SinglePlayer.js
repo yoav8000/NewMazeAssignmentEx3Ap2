@@ -1,22 +1,20 @@
-﻿
-
-
-
-var finishedGame = 0;
+﻿var finishedGame = 0;
 var mazeBoard;
 var enabled = true;
-
-    
-
+var gotMaze = false;
 
 
+$(function () {
+    document.getElementById("rows").value = localStorage.getItem("defaultRows");
+    document.getElementById("cols").value = localStorage.getItem("defaultCols");
+    document.getElementById("searchAlgorithm").value = localStorage.getItem("defaultSearchAlgo")
+});
 
 jQuery(function ($) {
 
-
     $(startNewGame).click(function () {
         if (enabled) {
-
+            gotMaze = true;
 
             var fillFieldsFlag = 0;
             if ($("#rows").val() == "") {
@@ -157,11 +155,12 @@ jQuery(function ($) {
 
     $(solveGame).click(function () {
         if (enabled) {
+            if(gotMaze){
             enabled = false;
             var apiUrl = "/api/Mazes";
 
             var tempCanvas = document.getElementById("mazeCanvas");
-                //mazeBoard = $("#mazeCanvas").drawMaze(tempCanvas);
+            //mazeBoard = $("#mazeCanvas").drawMaze(tempCanvas);
             mazeBoard.restartImagesLocation(tempCanvas);
 
             // ajax request.
@@ -195,6 +194,7 @@ jQuery(function ($) {
 
                 });
         }
+    }
     });
 });
 

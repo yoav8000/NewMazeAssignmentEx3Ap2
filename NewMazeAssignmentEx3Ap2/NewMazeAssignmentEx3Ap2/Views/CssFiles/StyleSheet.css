@@ -4,6 +4,7 @@
 
 
 #RegisterH1 {
+    margin-top:100px;
     text-align: center;
     font-size: 50px;
     color: black
@@ -28,7 +29,7 @@ input.RegisterInput {
     padding: 10px;
     font-size: inherit;
     margin-bottom: 25px;
-    width: 108%;
+    width: 100%;
     border: 2px solid steelblue;
     display: block;
 }

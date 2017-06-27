@@ -1,28 +1,22 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../../BootStrap/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
-    <style></style>
-    .navbar-fixed-top ul li{
-    display:inline-block;
-    color:#808080 !important;
-    }
-
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 </head>
-
-
 
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <ul class="nav navbar-nav navbar-center">
-                <li><a href="#"> Maze</a></li>
+                <li><a href="../HomePage/HomePage.html"> Maze</a></li>
                 <li><a href="../SinglePlayerGame/SinglePlayer.html">Single Game</a></li>
                 <li><a href="#"> MultiPlayer Game</a></li>
-                <li><a href="#"> Settings </a></li>
+                <li><a href="../DefaultSettings/DefaultSettings.html"> Settings </a></li>
                 <li><a href="#"> User Rangkings </a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -31,22 +25,5 @@
             </ul>
         </div>
     </nav>
-
-    <script src="../../Jquery/jquery-3.2.1.min.js"></script>
-        <script src="../../Jquery/jquery-3.2.1.js"></script>
-    <script>
-        $(function () {
-            if (sessionStorage.getItem("userName") != null) {
-                document.getElementById("register").innerHTML = "Hello " + sessionStorage.getItem("userName");
-                document.getElementById("register").href = "#";
-            }
-            if (sessionStorage.getItem("userName") != null) {
-                document.getElementById("login").innerHTML = "Log Off";
-                document.getElementById("login").href = "../RegistrationPage/Register.html";
-               
-
-            } 
-        });
-    </script>
 </body>
 </html>

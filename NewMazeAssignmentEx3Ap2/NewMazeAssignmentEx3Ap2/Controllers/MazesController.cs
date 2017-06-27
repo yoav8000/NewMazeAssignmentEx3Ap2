@@ -1,5 +1,6 @@
 ﻿
 
+using NewMazeAssignmentEx3Ap2.Models;
 using NewMazeAssignmentEx3Ap2.Models.MazeManager;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,9 @@ namespace NewMazeAssignmentEx3Ap2.Controllers
 {
     public class MazesController : ApiController
     {
-        private IModelManager mazeManager = new ModelManager();
+     //   private IModelManager mazeManager = new ModelManager();
+        private static IModel model = new Model();
+
 
         // GET: api/Mazes
         public IEnumerable<string> Get()
@@ -25,16 +28,21 @@ namespace NewMazeAssignmentEx3Ap2.Controllers
         // GET: api/Mazes/{mazeName}/{rows}/{cols}
         public string Get(string mazeName, int rows, int cols)
         {
-            mazeManager.GenerateSinglePlayerMaze(mazeName, rows, cols);
-            return (string)mazeManager.GetSinglePlayerMazeByName(mazeName).ToJSON();
+            model.GenerateteSinglePlayerMaze(mazeName, rows, cols);
+            return (string)model.SinglePlayerMazes[mazeName].ToJSON();
+
+
+        //    mazeManager.GenerateSinglePlayerMaze(mazeName, rows, cols);
+    //        return (string)mazeManager.GetSinglePlayerMazeByName(mazeName).ToJSON();
         }
 
         [HttpGet]
         // GET: api/Mazes/{mazeName}/{searchAlgorithm}
         public string Get(string mazeName,string searchAlgorithm)
         {
-          //  mazeManager.GenerateSinglePlayerMaze(mazeName, rows, cols);
-            return mazeManager.SolveMaze(mazeName,searchAlgorithm);
+         
+            return model.SolveMaze(mazeName, searchAlgorithm);
+
         }
 
 

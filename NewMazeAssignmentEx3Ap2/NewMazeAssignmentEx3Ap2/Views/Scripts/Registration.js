@@ -46,10 +46,11 @@ var ViewModel = function () {
 
         usersUri += "/" + tempUserName;
 
-
+        $("#loader").show();
         $.post(usersUri, user).done(function (item) {
             self.users.push(item);
             sessionStorage.setItem("userName", item.Name);
+            $("#loader").hide();
             window.location.replace("../HomePage/HomePage.html");
         })
             .fail(function (xhr) {
@@ -58,6 +59,7 @@ var ViewModel = function () {
                 } else {
                     alert("ERROR: something went wrong in connecting to the server.");
                 }
+                $("#loader").hide();
             });
     }
 

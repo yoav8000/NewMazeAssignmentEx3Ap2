@@ -26,6 +26,12 @@ namespace NewMazeAssignmentEx3Ap2
          );
 
             config.Routes.MapHttpRoute(
+             name: "ContactApi3",
+            routeTemplate: "api/{controller}/{userName}/{password}"
+       );
+
+
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }

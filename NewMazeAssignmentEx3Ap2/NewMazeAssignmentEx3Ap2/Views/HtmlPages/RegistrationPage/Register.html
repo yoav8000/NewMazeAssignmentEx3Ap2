@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <title>Registration Form</title>
     <link href="../../CssFiles/StyleSheet.css" rel="stylesheet" media="all" />
+    <link href="../../CssFiles/loader.css" rel="stylesheet" />
+    <script src="../../Jquery/jquery-3.2.1.js"></script>
     <script>
         if (sessionStorage.getItem("userName") != null) {
             sessionStorage.clear();
@@ -15,25 +17,31 @@
 
 </head>
 <body id="RegistartPagebody">
-    <form id="RegisterForm"   data-bind="submit: addUser">>
+    <form id="RegisterForm"   data-bind="submit: addUser">
+        <div id="navBar"></div>
+        <script type="text/javascript">
+
+             $(function (event) {
+                 $("#navBar").load("../TheNavBar/NavBar.html");
+             });
+        </script>
+
         <h1 id="RegisterH1">Sign Up</h1>
         <input id="userName" class="RegisterInput" type="text" placeholder="User Name" data-bind="value:name" name="user name" autocomplete="on" required />
         <input id="password" class="RegisterInput" type="password" placeholder="Password" data-bind="value:password" name="password" autocomplete="off" required />
         <input id="confirmPassword" class="RegisterInput" type="password" placeholder="Confirm Password" name="confirmPassword" autocomplete="off" required />
         <input id="email" class="RegisterInput" type="email" placeholder="Email" name="email" data-bind="value:email"  autocomplete="on" required />
         <button id="RegisterButton" type="submit" class="RegisterInput">Submit</button>
-    
-        <ul class="list-unstyled" data-bind="foreach: users">
-            <li> <span data-bind="text: Name" ></span></li>
+        <div class="loader" id="loader" hidden></div>
 
-</ul>
+
 </form>
 
     <script src="../../../Scripts/jquery-3.1.1.js"></script>
-    <script src="../../../Scripts/jquery-3.1.1.min.js"></script>
     <script src="../../../Scripts/knockout-3.4.2.debug.js"></script>
     <script src="../../../Scripts/knockout-3.4.2.js"></script>
     <script src="../../Scripts/Registration.js"></script>
+    <script src="../../Scripts/NavBarScript.js"></script>
 
 
 </body>

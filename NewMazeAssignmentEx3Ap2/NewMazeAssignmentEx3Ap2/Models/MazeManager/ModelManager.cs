@@ -48,5 +48,15 @@ namespace NewMazeAssignmentEx3Ap2.Models.MazeManager
            string result = mazeModel.SolveMaze(mazeName, searchAlgorithm);
             return result;
         }
+
+        public string GenerateMultiPlayerMaze(string name, int rows, int cols)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string JoinMaze(string name)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

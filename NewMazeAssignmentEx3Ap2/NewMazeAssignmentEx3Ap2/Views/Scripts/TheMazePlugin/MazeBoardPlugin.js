@@ -60,8 +60,13 @@
 
         }
         context = $(this).data("canavas").getContext("2d");
+
         context.drawImage($(this).data("playerImage"), $(this).data("cellWidth") * $(this).data("startCol"),
             $(this).data("cellHeight") * $(this).data("startRow"), $(this).data("cellWidth"), $(this).data("cellHeight"));
+
+
+
+
         context.drawImage($(this).data("destinationImage"), $(this).data("cellWidth") * $(this).data("exitCol"), $(this).data("cellHeight")
             * $(this).data("exitRow"), $(this).data("cellWidth"), $(this).data("cellHeight"));
         $(this).data("IsEnabled", true);

@@ -41,8 +41,12 @@ namespace NewMazeAssignmentEx3Ap2.Controllers
 
 
 
-        // GET: api/Users/{userName}/{password}
-        [ResponseType(typeof(User))]
+        //// GET: api/Users/{userName}/{password}
+        //[ResponseType(typeof(User))]
+        [HttpGet]
+        [Route("api/Users/{userName}/{password}")]
+
+
         public async Task<IHttpActionResult> GetUser(string userName, string password)
         {
 
@@ -51,7 +55,7 @@ namespace NewMazeAssignmentEx3Ap2.Controllers
             byte[] hash = sha.ComputeHash(buffer);
             string encryptedPassword = Convert.ToBase64String(hash);
 
-            User user = await db.Users.FindAsync(password);
+            User user = await db.Users.FindAsync(userName);
             if (user == null)
             {
                 return Ok("user wasn't in db");

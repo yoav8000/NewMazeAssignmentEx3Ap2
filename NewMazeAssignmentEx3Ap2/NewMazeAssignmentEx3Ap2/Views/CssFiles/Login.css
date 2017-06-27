@@ -1,0 +1,27 @@
+﻿body {
+}
+
+label {
+    display: inline-block;
+    margin: 20px auto;
+    width: 100px;
+    color: black;
+}
+
+input {
+    display: inline-block;
+    font-size: inherit;
+    width: 320px;
+    border-radius: 4px;
+    height: 30px;
+}
+
+button {
+    display: inline-block;
+    font-size: inherit;
+    width: 75px;
+    border-radius: 4px;
+    margin-left: 100px;
+    background-color: white;
+    height: 30px;
+}

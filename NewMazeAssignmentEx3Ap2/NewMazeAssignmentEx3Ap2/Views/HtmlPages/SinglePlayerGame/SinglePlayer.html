@@ -10,7 +10,7 @@
     <link href="../../CssFiles/loader.css" rel="stylesheet" />
 
 </head>
-<body>
+<body >
     <img src="../../Resources/minionphoto.PNG" id="playerImage" width="0" height="0" alt="playerImage" />
     <img src="../../Resources/destinationimage.PNG"  id="destinationImage" width="0" height="0" alt="destinationImage" />
   
@@ -19,16 +19,9 @@
 
 
     <div class="container body-content">
-       <div id="navbar"> </div>
+       <div id="navBar"> </div>
 
-        <script type="text/javascript">
-            $(function () {
-                $("#navbar").load("../TheNavBar/NavBar.html");
-            });
-        </script>
-
-
-        <h2>Single Player Game</h2><hr />
+        <h2 style="margin-top:50px">Single Player Game</h2><hr />
         <div class="col-sm-4 form-horizontal">
             <div class="form-group">
                 <label for="mazeName" class="col-sm-2 control-label">Name</label>
@@ -77,6 +70,8 @@
         </div>
     </div>
     <div class="loader" id="loader" hidden></div>
+
+    <script src="../../Scripts/NavBarScript.js"></script>
 
 </body>
 </html>

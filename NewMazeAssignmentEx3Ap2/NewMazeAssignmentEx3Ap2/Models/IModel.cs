@@ -12,12 +12,12 @@ namespace NewMazeAssignmentEx3Ap2.Models
     public interface IModel
     {
 
-     //   string GenerateMultiPlayerMaze(string name, int rows, int cols, Player player);
+        string GenerateMultiPlayerMaze(string name, int rows, int cols);
         Maze GenerateteSinglePlayerMaze(string name, int rows, int cols);
         string SolveMaze(string mazeName, string algorithm);
         ISearcher<Position> GetAlgorithmAccordingToIndicator(string algorithmIndicator);
         List<string> GetNamesOfJoinableMazes();
-      //  Maze JoinMaze(string maze, Player player);
+        Maze JoinMaze(string maze);
        // string Play(string[] args, Player player);
        // string Close(string mazeName, Player player);
 
@@ -73,26 +73,14 @@ namespace NewMazeAssignmentEx3Ap2.Models
         /// <value>
         /// The joinable mazes.
         /// </value>
-        /*
-        Dictionary<string, MazeGame> JoinableMazes
+        
+        Dictionary<string, Maze> JoinableMazes
         {
             get;
         }
-        */
+        
 
-        /// <summary>
-        /// Gets the active multi player mazes.
-        /// </summary>
-        /// <value>
-        /// The active multi player mazes.
-        /// </value>
-        /// 
-        /*
-        Dictionary<string, MazeGame> ActiveMultiPlayerMazes
-        {
-            get;
-        }
-        */
+        
         /// <summary>
         /// Gets the maze generator.
         /// </summary>
@@ -104,32 +92,6 @@ namespace NewMazeAssignmentEx3Ap2.Models
             get;
         }
 
-        /// <summary>
-        /// Gets the players and games.
-        /// </summary>
-        /// <value>
-        /// The players and games.
-        /// </value>
-        /// 
-        /*
-                Dictionary<Player, MazeGame> PlayersAndGames
-                {
-                    get;
-                }
-                */
-
-        /// <summary>
-        /// Gets or sets the i controller.
-        /// </summary>
-        /// <value>
-        /// The i controller.
-        /// </value>
-        /*
-        IController IController
-        {
-            get;
-            set;
-        }
-        */
+        
     }
 }
