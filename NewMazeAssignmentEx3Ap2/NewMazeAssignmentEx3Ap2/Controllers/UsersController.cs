@@ -74,6 +74,46 @@ namespace NewMazeAssignmentEx3Ap2.Controllers
 
 
 
+        [HttpGet]
+        [Route("api/Users/won/{userName}")]
+        public async Task<IHttpActionResult> GetUpdateWinner(string userName)
+        {
+            User user = await db.Users.FindAsync(userName);
+            if (user == null)
+            {
+                return Ok("user wasn't in db");
+            }
+            else
+            {
+                int wins = user.Wins;
+                wins += 1;
+                user.Wins = wins;
+                await db.SaveChangesAsync();
+                return Ok(user);
+            }
+        }
+
+
+        [HttpGet]
+        [Route("api/Users/lost/{userName}")]
+        public async Task<IHttpActionResult> GetUpdateLosr(string userName)
+        {
+            User user = await db.Users.FindAsync(userName);
+            if (user == null)
+            {
+                return Ok("user wasn't in db");
+            }
+            else
+            {
+                int losses = user.Losses;
+                losses += 1;
+                user.Losses = losses;
+                await db.SaveChangesAsync();
+                return Ok(user);
+            }
+        }
+
+
         // PUT: api/Users/5
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutUser(string id, User user)

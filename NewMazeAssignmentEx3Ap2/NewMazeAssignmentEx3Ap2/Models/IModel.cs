@@ -18,9 +18,7 @@ namespace NewMazeAssignmentEx3Ap2.Models
         ISearcher<Position> GetAlgorithmAccordingToIndicator(string algorithmIndicator);
         List<string> GetNamesOfJoinableMazes();
         Maze JoinMaze(string maze);
-       // string Play(string[] args, Player player);
-       // string Close(string mazeName, Player player);
-
+      
 
         /// <summary>
         /// Gets the algorithm factory.
@@ -90,8 +88,6 @@ namespace NewMazeAssignmentEx3Ap2.Models
         DFSMazeGenerator MazeGenerator
         {
             get;
-        }
-
-        
+        }       
     }
 }

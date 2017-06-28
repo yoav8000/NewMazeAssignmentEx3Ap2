@@ -1,7 +1,7 @@
 ﻿
 $(function () {
     var usersUri = "/api/Users";
-    var users =[];
+    var users = [];
 
     $.getJSON(usersUri).done(function (data) {
         for (var i = 0; i < data.length; ++i) {
@@ -26,11 +26,24 @@ $(function () {
                 "<td>" + users[i].Name + "</td > " +
                 "<td>" + users[i].Wins + "</td > " +
                 "<td>" + users[i].Losses + "</td > " +
-            "</tr>");
-            
+                "</tr>");
+
         }
         $("#rankingTable").append("</tbody>");
-    
+        $("#loader").hide();
 
-    });
+    })
+
+
+
+        .fail(function (xhr) {
+
+            $("#loader").hide();
+
+            alert("Error: something went wrong while trying to connect to the server");
+
+        });
+
+
+
 });

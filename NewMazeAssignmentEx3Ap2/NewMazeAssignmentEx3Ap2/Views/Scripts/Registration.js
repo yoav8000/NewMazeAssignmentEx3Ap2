@@ -13,7 +13,7 @@ function validatePassword() {
 password.onchange = validatePassword;
 confirm_password.onkeyup = validatePassword;
 
-
+var userClickedRegister = false;
 
 
 var ViewModel = function () {
@@ -24,43 +24,44 @@ var ViewModel = function () {
     self.email = ko.observable();
     var usersUri = "/api/Users";
 
-    function getAllUsers() {
-        $.getJSON(usersUri).done(function (data) {
-            self.users(data);
-        });
-    }
-
    
     self.addUser = function () {
-        var usersUri = "/api/Users";
+        if (!userClickedRegister) {
+            userClickedRegister = true;
+            var usersUri = "/api/Users";
+            var tempUserName = document.getElementById("userName").value;
+            var user =
+                {
+                    name: tempUserName,
+                    password: document.getElementById("password").value,
+                    email: document.getElementById("email").value,
+                    Wins: 0,
+                    Losses: 0
+                };
 
-        var tempUserName = document.getElementById("userName").value;
-        var user =
-            {
-                name: tempUserName,
-                password: document.getElementById("password").value,
-                email: document.getElementById("email").value,
-                Wins: 0,
-                Losses: 0
-            };
+            usersUri += "/" + tempUserName;
 
-        usersUri += "/" + tempUserName;
-
-        $("#loader").show();
-        $.post(usersUri, user).done(function (item) {
-            self.users.push(item);
-            sessionStorage.setItem("userName", item.Name);
-            $("#loader").hide();
-            window.location.replace("../HomePage/HomePage.html");
-        })
-            .fail(function (xhr) {
-                if (409 == xhr.status) {
-                    alert("The user name is already taken,\nplease choose another one.");
-                } else {
-                    alert("ERROR: something went wrong in connecting to the server.");
-                }
+            $("#loader").show();
+            $.post(usersUri, user).done(function (item) {
+                self.users.push(item);
+                sessionStorage.setItem("userName", item.Name);
                 $("#loader").hide();
-            });
+                window.location.replace("../HomePage/HomePage.html");
+            })
+                .fail(function (xhr) {
+                    $("#loader").hide();
+                    if (409 == xhr.status) {
+                       
+                        setTimeout(function () { alert("The user name is already taken,\nplease choose another one."); }, 50);
+                        userClickedRegister = false;
+                    } else {
+                        setTimeout(function () { alert("ERROR: something went wrong in connecting to the server."); }, 50);
+                        
+                        userClickedRegister = false;
+                    }
+                 
+                });
+        }
     }
 
 }

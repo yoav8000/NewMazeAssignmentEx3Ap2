@@ -307,35 +307,5 @@ namespace NewMazeAssignmentEx3Ap2.Models
         }
 
 
-
-        /// <summary>
-        /// Plays the specified arguments.
-        /// </summary>
-        /// <param name="args">The arguments.</param>
-        /// <param name="player">The player.</param>
-        /// <returns></returns>
-        
-        /*
-        public string Close(string mazeName, Player player)
-        {
-
-            if (!ActiveMultiPlayerMazes.ContainsKey(mazeName))
-            {
-                return $"Error: there is no such maze to close named {mazeName}";
-            }
-            MazeGame game = ActiveMultiPlayerMazes[mazeName];//getting the game.
-
-            game.NotifyOtherPlayers("The Game Was Closed", player);//for me.
-
-            RemovePlayersFromPlayersAndGames(mazeName); //getting the players of the dictionary of the players and games
-            game.CloseAllClients();
-            activeMultiPlayerMazes.Remove(mazeName);
-
-
-            return "";
-
-        }
-        
-        */
     }
 }

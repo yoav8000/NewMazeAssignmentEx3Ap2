@@ -4,7 +4,7 @@
 
 
 var users;
-
+var userClickedLogin = false;
 
 
 var ViewModel = function () {
@@ -17,33 +17,40 @@ var ViewModel = function () {
 
 
     self.login = function () {
-        var usersUri = "/api/Users";
-        
-        usersUri += "/" + self.userName() + "/" + self.password();
-        $("#loader").show();
-        $.get(usersUri, self.userName(), self.password()).done(function (item) {
-            self.users.push(item);
-            sessionStorage.setItem("userName", item.Name);
-            if (item == "user wasn't in db") {
-                alert("incorrect username\nplease enter a correct user name.");
-            
-            } else {
-                $("#loader").hide();
-                if (item == "incorrect password") {
-                    alert("incorrect password,\nplease enter the correct password.");
+        if (!userClickedLogin) {
+            userClickedLogin = true;;
+            var usersUri = "/api/Users";
+            usersUri += "/" + self.userName() + "/" + self.password();
+            $("#loader").show();
+            $.get(usersUri, self.userName(), self.password()).done(function (item) {
+                if (item == "user wasn't in db") {
+                    $("#loader").hide();
+                    setTimeout(function () { alert("incorrect username\nplease enter a correct user name."); }, 50);
+
+
+                    userClickedLogin = false;
                 } else {
-                    window.location.replace("../HomePage/HomePage.html");
+
+                    if (item == "incorrect password") {
+                        $("#loader").hide();
+                        setTimeout(function () { alert("incorrect password,\nplease enter the correct password."); }, 50);
+                        userClickedLogin = false;
+                    } else {
+                        self.users.push(item);
+                        sessionStorage.setItem("userName", item.Name);
+                        window.location.replace("../HomePage/HomePage.html");
+                    }
                 }
-            }
-        })
-            .fail(function (xhr) {
-                if (409 == xhr.status) {
-                    alert("The user name is already taken,\nplease choose another one.");
-                } else {
-                    alert("ERROR: something went wrong in connecting to the server.");
-                }
-                $("#loader").hide();
-            });
+
+            })
+                .fail(function (xhr) {
+                    $("#loader").hide();
+                    setTimeout(function () { alert("ERROR: something went wrong in connecting to the server."); }, 50);
+
+                    userClickedLogin = false;
+
+                });
+        }
     }
 
 }

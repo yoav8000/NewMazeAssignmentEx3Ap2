@@ -1,4 +1,12 @@
-﻿$(function () {
+﻿
+$(function () {
+    document.getElementById("rows").value = localStorage.getItem("defaultRows");
+    document.getElementById("cols").value = localStorage.getItem("defaultCols");
+    document.getElementById("searchAlgorithm").value = localStorage.getItem("defaultSearchAlgo")
+});
+
+
+$(function () {
     $("#saveSettings").click(function () {
         var tempRows = document.getElementById("rows").value;
         var tempCols = document.getElementById("cols").value;
