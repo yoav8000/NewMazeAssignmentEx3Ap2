@@ -47,17 +47,21 @@ namespace NewMazeAssignmentEx3Ap2.Controllers
         }
 
 
-        public void PlayCommand(string direction)
+        public void PlayCommand(string mazeName, string direction)
         {
-
-
-
-
+            string playerId = this.Context.ConnectionId;
+            Players players = mazesToPlayersDic[mazeName];
+            string connectionId = null;
+            if (playerId == players.PlayerId)
+            {
+                connectionId = players.OpponentId;
+            }
+            else
+            {
+                connectionId = players.PlayerId;
+            }
+            this.Clients.Client(connectionId).moveOpponent(direction);
         }
-
-
-
-
 
 
     }

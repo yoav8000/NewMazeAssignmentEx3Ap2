@@ -68,7 +68,7 @@ jQuery(function ($) {
                             var mazeRow = [];
                             for (var i = 0; i < rowsAmmount; ++i) {
                                 for (var j = 0; j < colsAmmount; ++j) {
-                                    mazeRow[j] = mazeString[i * rowsAmmount + j];
+                                    mazeRow[j] = mazeString[i * colsAmmount + j];
                                 }
                                 mazeArray[i] = mazeRow;
                                 mazeRow = [];

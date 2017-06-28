@@ -1,8 +1,8 @@
-﻿var finishedGame = 0;
-var mazeBoard;
+﻿var mazeBoard;
 var opponentBoard;
 var enabled = true;
 var gotMaze = false;
+var mazeName;
 
 var multiPlayerHub = $.connection.multiPlayerHub;
 
@@ -54,7 +54,7 @@ jQuery(function ($) {
 
         $(joinGame).click(function () {
             if (enabled) {
-                var mazeName = $("#selectGames option:selected").text();
+                mazeName = $("#selectGames option:selected").text();
                 document.title = mazeName;
                 multiPlayerHub.server.joinCommand(mazeName);
             }
@@ -71,13 +71,17 @@ jQuery(function ($) {
 
         $("#mazeCanvas").keydown(function (e) {
             if (enabled) {
+                var movedFlag = false;
+                var direction;
+                var playerType = "me";
                 switch (e.which) {
                     case 37:
                         if (mazeBoard.data("IsEnabled")) {
                             if ((mazeBoard.data("currentColPos") - 1 >= 0) &&
                                 mazeBoard.data("mazeData")[mazeBoard.data("currentRowPos")][mazeBoard.data("currentColPos") - 1] == 0) {
                                 MovePlayer("0");//left
-
+                                direction = "0";
+                                movedFlag = true;
                             }
                         }
                         break;
@@ -87,7 +91,8 @@ jQuery(function ($) {
                             if ((mazeBoard.data("currentRowPos") - 1 >= 0) &&
                                 mazeBoard.data("mazeData")[mazeBoard.data("currentRowPos") - 1][mazeBoard.data("currentColPos")] == 0) {
                                 MovePlayer("2");//up
-
+                                direction = "2";
+                                movedFlag = true;
                             }
                         }
                         break;
@@ -97,7 +102,8 @@ jQuery(function ($) {
                             if ((mazeBoard.data("currentColPos") + 1 < mazeBoard.data("cols")) &&
                                 mazeBoard.data("mazeData")[mazeBoard.data("currentRowPos")][mazeBoard.data("currentColPos") + 1] == 0) {
                                 MovePlayer("1");//right
-
+                                direction = "1";
+                                movedFlag = true;
                             }
                         }
                         break;
@@ -107,18 +113,21 @@ jQuery(function ($) {
                             if ((mazeBoard.data("currentRowPos") + 1 < mazeBoard.data("rows")) &&
                                 mazeBoard.data("mazeData")[mazeBoard.data("currentRowPos") + 1][mazeBoard.data("currentColPos")] == 0) {
                                 MovePlayer("3");//down
+                                direction = "3";
+                                movedFlag = true;
                             }
                         }
                         break;
                 }
+                if (movedFlag) {
+                    multiPlayerHub.server.playCommand(mazeName, direction);
+                }
 
                 if (mazeBoard.data("currentRowPos") == mazeBoard.data("exitRow") && mazeBoard.data("currentColPos") == mazeBoard.data("exitCol")) {
                     mazeBoard.data("IsEnabled", false);
-                    if (finishedGame == 0) {
                         setTimeout(function () { alert("Congratulations! you have reached the destination!"); }, 5);
-                        //alert("Congratulations! you have reached the destination!");
-                        finishedGame = 1;
-                    }
+                        setTimeout(function () { window.location.replace("../RankingPage/Ranking.html"); }, 7);
+
                 }
             }
         });
@@ -131,22 +140,26 @@ jQuery(function ($) {
         switch (direction) {
             case "0":
                 {
+
                     mazeBoard.moveLeft();
                     break;
                 }
             case "1":
                 {
-                    mazeBoard.moveRight();
+                        mazeBoard.moveRight();
+                
                     break;
                 }
             case "2":
                 {
-                    mazeBoard.moveUp();
+                        mazeBoard.moveUp();
+                
                     break;
                 }
             case "3":
                 {
-                    mazeBoard.moveDown();
+                        mazeBoard.moveDown();
+                
                     break;
                 }
             default:
@@ -154,7 +167,7 @@ jQuery(function ($) {
                     break;
                 }
         }
-        multiPlayerHub.server.playCommand(direction);
+
     }
 });
 
@@ -181,20 +194,19 @@ multiPlayerHub.client.getMaze = function (maze) {
     var mazeRow = [];
     for (var i = 0; i < rowsAmmount; ++i) {
         for (var j = 0; j < colsAmmount; ++j) {
-            mazeRow[j] = mazeString[i * rowsAmmount + j];
+            mazeRow[j] = mazeString[i * colsAmmount + j];
         }
         mazeArray[i] = mazeRow;
         mazeRow = [];
     }
 
     mazeBoard = $("#mazeCanvas").drawMaze(canvas, id1, mazeArray, mazeName, rowsAmmount, colsAmmount, startPoint.Row, startPoint.Col, endPoint.Row, endPoint.Col, playerImage, destImage);
-    opponentBoard = $("#mazeCanvas").drawMaze(opponentCanvas, id2, mazeArray, mazeName, rowsAmmount, colsAmmount, startPoint.Row, startPoint.Col, endPoint.Row, endPoint.Col, playerImage, destImage);
+    opponentBoard = $("#opponentCanvas").drawMaze(opponentCanvas, id2, mazeArray, mazeName, rowsAmmount, colsAmmount, startPoint.Row, startPoint.Col, endPoint.Row, endPoint.Col, playerImage, destImage);
 
     $("#loader").hide();
-
     $("#mazeCanvas").focus();
     enabled = true;
-    finishedGame = 0;
+  
 }
 
 
@@ -216,4 +228,52 @@ multiPlayerHub.client.updateJoinablMazes = function (list) {
     }
 
 }
+
+
+multiPlayerHub.client.moveOpponent = function (direction) {
+   
+
+    switch (direction) {
+        case "0":
+            {
+                    opponentBoard.moveLeft();
+                break;
+            }
+        case "1":
+            {
+                    opponentBoard.moveRight();
+   
+                break;
+            }
+        case "2":
+            {
+                    opponentBoard.moveUp();
+   
+                break;
+            }
+        case "3":
+            {
+                    opponentBoard.moveDown();
+   
+                break;
+            }
+        default:
+            {
+                break;
+            }
+    }
+
+    if (opponentBoard.data("currentRowPos") == opponentBoard.data("exitRow") && opponentBoard.data("currentColPos") == opponentBoard.data("exitCol")) {
+        opponentBoard.data("IsEnabled", false);
+        setTimeout(function () { alert("Unfortunatly you lost the game!"); }, 50);
+        setTimeout(function () { window.location.replace("../RankingPage/Ranking.html"); }, 52);
+
+            
+        
+        
+        
+    }
+
+}
+
 
