@@ -54,7 +54,7 @@ jQuery(function ($) {
                         // ajax call.
                         $("#loader").show();
                         mazeName = $("#mazeName").val();
-
+                        document.title = mazeName;
 
                         rowsAmmount = $("#rows").val();
                         colsAmmount = $("#cols").val();

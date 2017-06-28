@@ -32,11 +32,15 @@ jQuery(function ($) {
                 alert("Please enter a name for the maze.")
             }
             if (!fillFieldsFlag) {
+
+
                 var apiUrl = "/api/Mazes";
 
                 // ajax call.
                 $("#loader").show();
                 mazeName = $("#mazeName").val();
+                document.title = mazeName;
+
 
                 if (mazeBoard != undefined && mazeName != mazeBoard.data("mazeName")) {
                     var tempCanvas = document.getElementById("mazeCanvas");
