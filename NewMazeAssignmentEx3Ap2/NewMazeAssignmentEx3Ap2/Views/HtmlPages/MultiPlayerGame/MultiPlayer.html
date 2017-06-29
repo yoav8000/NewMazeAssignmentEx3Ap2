@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿<!-- The multi player page -->
+
+<!DOCTYPE html>
 <html>
 <head>
     <title></title>
@@ -20,6 +22,7 @@
 
 
     <div class="container body-content" style="margin-left:50px">
+        <!-- The navbar of the page -->
         <div id="navBar"> </div>
 
         <h2 style="margin-top:50px">Multiplayer Game</h2><hr />
@@ -28,7 +31,7 @@
             
             
             
-            
+            <!-- The select games -->
             <div class="form-group" style="margin-top:100px">
                 <label class="col-sm-2 control-label">Games</label>
                 <div class="col-sm-10">
@@ -39,6 +42,7 @@
             
             <div class="form-group">
                 <div class="col-sm-5 col-sm-offset-2">
+                    <!-- The join game button  -->
                     <input type="button" class="form-control" value="Join Game" id="joinGame" />
                 </div>
             </div>
@@ -51,6 +55,7 @@
             <div class="form-group">
                 <label for="mazeName" class="col-sm-2 control-label">Name</label>
                 <div class="col-sm-10">
+                    <!-- The maze Name input   -->
                     <input type="text" class="form-control" id="mazeName" />
                 </div>
             </div>
@@ -59,17 +64,20 @@
             <div class="form-group">
                 <label for="rows" class="col-sm-2 control-label">Rows</label>
                 <div class="col-sm-10">
+                    <!-- The  rows input   -->
                     <input type="number" class="form-control" id="rows" />
                 </div>
             </div>
             <div class="form-group">
                 <label for="cols" class="col-sm-2 control-label">Cols</label>
                 <div class="col-sm-10">
+                    <!-- The  cols input   -->
                     <input type="number" class="form-control" id="cols" />
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-10 col-sm-offset-2">
+                    <!-- The Start New Game button  -->
                     <input type="button" class="form-control" value="Start New Game" id="startNewGame" />
                 </div>
             </div>
@@ -79,16 +87,19 @@
 
         <div class="col-sm-4 text-center"style="margin-top:50px" >
             <label id="myBoard" style="margin-left:10px"> myBoard</label>
+            <!-- The player canvas  -->
             <canvas id="mazeCanvas" tabindex="1" style="border:2px black solid" class="maze-board" width="500" height="500"></canvas>
         </div>
         <div class="col-sm-4 text-center" style="margin-top:50px">
             <label id="opponentBoard" style="margin-left:220px"> Opponent's Board</label>
+            <!-- The other player canvas  -->
             <canvas id="opponentCanvas" tabindex="1" style="border:2px black solid;margin-left:150px;" class="opponent-board" width="500" height="500"></canvas>
         </div>
 
     </div>
 
     <div class="loader" id="loader" hidden></div>
+    <!-- The scripts of the page -->
     <script src="../../Scripts/NavBarScript.js"></script>
 
     <script src="../../Scripts/MultiPlayer.js"></script>

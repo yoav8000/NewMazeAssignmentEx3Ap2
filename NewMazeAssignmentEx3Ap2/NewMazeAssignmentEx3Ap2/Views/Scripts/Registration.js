@@ -1,7 +1,7 @@
 ﻿var password = document.getElementById("password")
     , confirm_password = document.getElementById("confirmPassword");
 
-
+// check that the password and confirmation is the same
 function validatePassword() {
     if (password.value != confirm_password.value) {
         confirm_password.setCustomValidity("Passwords Don't Match");
@@ -24,7 +24,11 @@ var ViewModel = function () {
     self.email = ko.observable();
     var usersUri = "/api/Users";
 
-   
+
+    /* get the new details of user and sent to the server the details
+    *  if there is another one with the same details the request deny.
+    *  else the user move to home page.
+    */
     self.addUser = function () {
         if (!userClickedRegister) {
             userClickedRegister = true;
@@ -38,7 +42,7 @@ var ViewModel = function () {
                     Wins: 0,
                     Losses: 0
                 };
-
+            // create the request
             usersUri += "/" + tempUserName;
 
             $("#loader").show();

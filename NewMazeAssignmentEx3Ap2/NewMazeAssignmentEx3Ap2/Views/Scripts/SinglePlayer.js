@@ -3,34 +3,39 @@ var mazeBoard;
 var enabled = true;
 var gotMaze = false;
 
-
+// put the default details on the text box
 $(function () {
     document.getElementById("rows").value = localStorage.getItem("defaultRows");
     document.getElementById("cols").value = localStorage.getItem("defaultCols");
     document.getElementById("searchAlgorithm").value = localStorage.getItem("defaultSearchAlgo")
 });
 
+
 jQuery(function ($) {
 
+    // define a function when push the start new game button
     $(startNewGame).click(function () {
         if (enabled) {
             gotMaze = true;
 
             var fillFieldsFlag = 0;
+            // check that the rows text is not empty
             if ($("#rows").val() == "") {
                 fillFieldsFlag = 1;
                 alert("Please enter rows")
 
             }
-
+            // check that the cols text is not empty
             if ($("#cols").val() == "") {
                 fillFieldsFlag = 1;
                 alert("Please enter cols")
             }
+            // check that the maze Name text is not empty
             if ($("#mazeName").val() == "") {
                 fillFieldsFlag = 1;
                 alert("Please enter a name for the maze.")
             }
+            // if there are all details
             if (!fillFieldsFlag) {
 
 
@@ -51,6 +56,8 @@ jQuery(function ($) {
                 if (mazeBoard == undefined || mazeName != mazeBoard.data("mazeName")) {
                     rowsAmmount = $("#rows").val();
                     colsAmmount = $("#cols").val();
+
+                    // sent the request to the server (Get request)
                     $.getJSON(apiUrl + "/" + mazeName + "/" + rowsAmmount + "/" + colsAmmount)
 
                         // when done with the ajax call.
@@ -77,9 +84,10 @@ jQuery(function ($) {
                                 mazeArray[i] = mazeRow;
                                 mazeRow = [];
                             }
-
+                            // draw the Maze on the canvaas
                             mazeBoard = $("#mazeCanvas").drawMaze(canvas, id, mazeArray, mazeName, rowsAmmount, colsAmmount, startPoint.Row, startPoint.Col, endPoint.Row, endPoint.Col, playerImage, destImage);
 
+                            // hide the loader
                             $("#loader").hide();
 
                             $("#mazeCanvas").focus();
@@ -100,12 +108,15 @@ jQuery(function ($) {
         }
     });
 
-
+    // define a function when the user press any key
     $("#mazeCanvas").keydown(function (e) {
+        // if the maze drawed on the canvas
         if (enabled) {
             switch (e.which) {
+                // case the user press left
                 case 37:
                     if (mazeBoard.data("IsEnabled")) {
+                        // check that the move is valid
                         if ((mazeBoard.data("currentColPos") - 1 >= 0) &&
                             mazeBoard.data("mazeData")[mazeBoard.data("currentRowPos")][mazeBoard.data("currentColPos") - 1] == 0) {
                             MovePlayer("0");//left
@@ -114,8 +125,9 @@ jQuery(function ($) {
                     }
                     break;
                 case 38:
+                    // case the user press up
                     if (mazeBoard.data("IsEnabled")) {
-
+                        // check that the move is valid
                         if ((mazeBoard.data("currentRowPos") - 1 >= 0) &&
                             mazeBoard.data("mazeData")[mazeBoard.data("currentRowPos") - 1][mazeBoard.data("currentColPos")] == 0) {
                             MovePlayer("2");//up
@@ -124,8 +136,9 @@ jQuery(function ($) {
                     }
                     break;
                 case 39:
+                    // case the user press right
                     if (mazeBoard.data("IsEnabled")) {
-
+                        // check that the move is valid
                         if ((mazeBoard.data("currentColPos") + 1 < mazeBoard.data("cols")) &&
                             mazeBoard.data("mazeData")[mazeBoard.data("currentRowPos")][mazeBoard.data("currentColPos") + 1] == 0) {
                             MovePlayer("1");//right
@@ -134,8 +147,9 @@ jQuery(function ($) {
                     }
                     break;
                 case 40:
+                    // case the user press down
                     if (mazeBoard.data("IsEnabled")) {
-
+                        // check that the move is valid
                         if ((mazeBoard.data("currentRowPos") + 1 < mazeBoard.data("rows")) &&
                             mazeBoard.data("mazeData")[mazeBoard.data("currentRowPos") + 1][mazeBoard.data("currentColPos")] == 0) {
                             MovePlayer("3");//down
@@ -156,13 +170,15 @@ jQuery(function ($) {
     });
 
 
-
+    // define a function when the user press on solveGame buttopn
     $(solveGame).click(function () {
+        // if the maze drawed on the canvas
         if (enabled) {
             if(gotMaze){
             enabled = false;
             var apiUrl = "/api/Mazes";
 
+            // get the canvas 
             var tempCanvas = document.getElementById("mazeCanvas");
             //mazeBoard = $("#mazeCanvas").drawMaze(tempCanvas);
             mazeBoard.restartImagesLocation(tempCanvas);
@@ -202,7 +218,9 @@ jQuery(function ($) {
     });
 });
 
+// function that move the player
 function MovePlayer(direction) {
+
 
     switch (direction) {
         case "0":

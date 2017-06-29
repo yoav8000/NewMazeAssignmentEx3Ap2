@@ -8,6 +8,7 @@ var enableButtons = true;
 var multiPlayerHub = $.connection.multiPlayerHub;
 
 
+// If the user didnt login, he will move to the Login Page
 $(function () {
     if (sessionStorage.getItem("userName") == null) {
         alert("please sign up and login so you could play against an opponent");
@@ -18,15 +19,17 @@ $(function () {
 
 jQuery(function ($) {
 
-
+    // connect to the hub server
     $.connection.hub.start().done(function () {
 
+        // get the list of the available multi games and put the default values
         $(function () {
             multiPlayerHub.server.listCommand();
             document.getElementById("rows").value = localStorage.getItem("defaultRows");
             document.getElementById("cols").value = localStorage.getItem("defaultCols");
         });
 
+        // define a function when the user press on startNewGame buttopn
         $(startNewGame).click(function () {
             if (enableButtons) {
                 enableButtons = false;
@@ -34,16 +37,18 @@ jQuery(function ($) {
                     gotMaze = true;
 
                     var fillFieldsFlag = 0;
+                    // check that the rows text is not empty
                     if ($("#rows").val() == "") {
                         fillFieldsFlag = 1;
                         alert("Please enter rows")
 
                     }
-
+                    // check that the cols text is not empty
                     if ($("#cols").val() == "") {
                         fillFieldsFlag = 1;
                         alert("Please enter cols")
                     }
+                    // check that the mazeName text is not empty
                     if ($("#mazeName").val() == "") {
                         fillFieldsFlag = 1;
                         alert("Please enter a name for the maze.")
@@ -66,7 +71,7 @@ jQuery(function ($) {
         });
 
 
-
+        // define a function when the user press on joinGame button
         $(joinGame).click(function () {
             if (enabled) {
                 if (enableButtons) {
@@ -78,7 +83,7 @@ jQuery(function ($) {
             }
         });
 
-
+        // define a function when the user press on selectGames button
         $(selectGames).click(function () {
             if (enabled) {
                 if (enableButtons) {
@@ -88,15 +93,17 @@ jQuery(function ($) {
         });
 
 
-
+        // define a function when the user press any key
         $("#mazeCanvas").keydown(function (e) {
             if (enabled) {
                 var movedFlag = false;
                 var direction;
                 var playerType = "me";
                 switch (e.which) {
+                    // case the user press left
                     case 37:
                         if (mazeBoard.data("IsEnabled")) {
+                            // check that the move is valid
                             if ((mazeBoard.data("currentColPos") - 1 >= 0) &&
                                 mazeBoard.data("mazeData")[mazeBoard.data("currentRowPos")][mazeBoard.data("currentColPos") - 1] == 0) {
                                 MovePlayer("0");//left
@@ -105,9 +112,10 @@ jQuery(function ($) {
                             }
                         }
                         break;
+                    // case the user press up
                     case 38:
                         if (mazeBoard.data("IsEnabled")) {
-
+                            // check that the move is valid
                             if ((mazeBoard.data("currentRowPos") - 1 >= 0) &&
                                 mazeBoard.data("mazeData")[mazeBoard.data("currentRowPos") - 1][mazeBoard.data("currentColPos")] == 0) {
                                 MovePlayer("2");//up
@@ -116,9 +124,10 @@ jQuery(function ($) {
                             }
                         }
                         break;
+                    // case the user press right
                     case 39:
                         if (mazeBoard.data("IsEnabled")) {
-
+                            // check that the move is valid
                             if ((mazeBoard.data("currentColPos") + 1 < mazeBoard.data("cols")) &&
                                 mazeBoard.data("mazeData")[mazeBoard.data("currentRowPos")][mazeBoard.data("currentColPos") + 1] == 0) {
                                 MovePlayer("1");//right
@@ -127,9 +136,10 @@ jQuery(function ($) {
                             }
                         }
                         break;
+                    // case the user press down
                     case 40:
                         if (mazeBoard.data("IsEnabled")) {
-
+                            // check that the move is valid
                             if ((mazeBoard.data("currentRowPos") + 1 < mazeBoard.data("rows")) &&
                                 mazeBoard.data("mazeData")[mazeBoard.data("currentRowPos") + 1][mazeBoard.data("currentColPos")] == 0) {
                                 MovePlayer("3");//down
@@ -164,7 +174,7 @@ jQuery(function ($) {
     });
 
 
-
+    // function that move the player
     function MovePlayer(direction) {
 
         switch (direction) {
@@ -252,7 +262,7 @@ multiPlayerHub.client.updateJoinablMazes = function (list) {
 
 }
 
-
+// function that move the opponent Board
 multiPlayerHub.client.moveOpponent = function (direction) {
 
 

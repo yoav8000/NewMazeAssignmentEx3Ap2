@@ -241,7 +241,7 @@ namespace NewMazeAssignmentEx3Ap2.Models
                 SolutionAdapter solutionAdapter1 = new SolutionAdapter(MazeSolutions[mazeName], mazeName);
                 return solutionAdapter1.ToJson();
             }
-
+            
             MazeAdapter mazeAdapter = new MazeAdapter(SinglePlayerMazes[mazeName]);
             ISearcher<Position> searchAlgorithm = GetAlgorithmAccordingToIndicator(algorithm);
             Solution<Position> solution = searchAlgorithm.Search(mazeAdapter);

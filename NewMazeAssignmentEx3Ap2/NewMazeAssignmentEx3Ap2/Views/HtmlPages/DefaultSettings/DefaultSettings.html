@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿<!-- The default settings page -->
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -8,26 +9,32 @@
 </head>
 <body>
 
-    <div class="container body-content">
-        <div id="navBar"> </div>
 
+    <div class="container body-content">
+        <!-- The navbar of the page -->
+        <div id="navBar"> </div>
+        <!-- The body of the page -->
         <h2 style="margin-top:100px">Default Maze Settings</h2><hr />
+        <!-- The form of the page -->
         <div class="col-sm-4 form-horizontal">
             <div class="form-group">
                 <label for="rows" class="col-sm-2 control-label">Rows</label>
                 <div class="col-sm-10">
+                    <!-- The input rows -->
                     <input type="number" class="form-control" id="rows" required  />
                 </div>
             </div>
             <div class="form-group">
                 <label for="cols" class="col-sm-2 control-label">Cols</label>
                 <div class="col-sm-10">
+                    <!-- The input cols -->
                     <input type="number" class="form-control" id="cols" required />
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Search Algo</label>
                 <div class="col-sm-10">
+                    <!-- The input algo -->
                     <select id="searchAlgorithm" class="form-control">
                         <option value="bfs">Bfs</option>
                         <option value="dfs">Dfs</option>
@@ -43,6 +50,7 @@
         </div>
 
     </div>
+    <!-- The scripts of the page -->
             <script src="../../../Scripts/jquery-3.1.1.js"></script>
             <script src="../../Scripts/NavBarScript.js"></script>
             <script src="../../Scripts/DefaultSettings.js"></script>

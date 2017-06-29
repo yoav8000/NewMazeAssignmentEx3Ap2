@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿<!-- The register page -->
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -27,16 +28,21 @@
         </script>
 
         <h1 id="RegisterH1">Sign Up</h1>
+        <!-- The user name input  -->
         <input id="userName" class="RegisterInput" type="text" placeholder="User Name" data-bind="value:name" name="user name" autocomplete="on" required />
+        <!-- The password input  -->
         <input id="password" class="RegisterInput" type="password" placeholder="Password" data-bind="value:password" name="password" autocomplete="off" required />
+        <!-- The confirm Password input  -->
         <input id="confirmPassword" class="RegisterInput" type="password" placeholder="Confirm Password" name="confirmPassword" autocomplete="off" required />
+        <!-- The email input  -->
         <input id="email" class="RegisterInput" type="email" placeholder="Email" name="email" data-bind="value:email"  autocomplete="on" required />
+        <!-- The  Register Button input  -->
         <button id="RegisterButton" type="submit" class="RegisterInput">Submit</button>
         <div class="loader" id="loader" hidden></div>
 
 
 </form>
-
+    <!-- The scripts of the page -->
     <script src="../../../Scripts/jquery-3.1.1.js"></script>
     <script src="../../../Scripts/knockout-3.4.2.debug.js"></script>
     <script src="../../../Scripts/knockout-3.4.2.js"></script>

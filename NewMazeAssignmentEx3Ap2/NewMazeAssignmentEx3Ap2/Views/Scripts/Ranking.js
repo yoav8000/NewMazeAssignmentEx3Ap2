@@ -1,12 +1,15 @@
 ﻿
+// sent a request to the server in oreder to get the rank table
 $(function () {
     var usersUri = "/api/Users";
     var users = [];
 
+    // sent the request
     $.getJSON(usersUri).done(function (data) {
         for (var i = 0; i < data.length; ++i) {
             users[i] = data[i];
         }
+        // sort the table by wins - loss
         users.sort(function (a, b) {
             var calcA = a.Wins - a.Losses;
             var calcB = b.Wins - b.Losses;
@@ -35,7 +38,7 @@ $(function () {
     })
 
 
-
+        // if fail 
         .fail(function (xhr) {
 
             $("#loader").hide();

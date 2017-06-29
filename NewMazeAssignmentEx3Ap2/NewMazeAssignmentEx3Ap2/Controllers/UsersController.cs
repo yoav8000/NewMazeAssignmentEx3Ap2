@@ -16,17 +16,30 @@ using System.Text;
 
 namespace NewMazeAssignmentEx3Ap2.Controllers
 {
+    /// <summary>
+    /// The records table controller
+    /// </summary>
+    /// <seealso cref="System.Web.Http.ApiController" />
     public class UsersController : ApiController
     {
         private NewMazeAssignmentEx3Ap2Context db = new NewMazeAssignmentEx3Ap2Context();
 
         // GET: api/Users
+        /// <summary>
+        /// Gets the users.
+        /// </summary>
+        /// <returns></returns>
         public IQueryable<User> GetUsers()
         {
             return db.Users;
         }
 
         // GET: api/Users/5
+        /// <summary>
+        /// Gets the user.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         [ResponseType(typeof(User))]
         public async Task<IHttpActionResult> GetUser(string id)
         {
@@ -43,6 +56,12 @@ namespace NewMazeAssignmentEx3Ap2.Controllers
 
         //// GET: api/Users/{userName}/{password}
         //[ResponseType(typeof(User))]
+        /// <summary>
+        /// Gets the user.
+        /// </summary>
+        /// <param name="userName">Name of the user.</param>
+        /// <param name="password">The password.</param>
+        /// <returns></returns>
         [HttpGet]
         [Route("api/Users/{userName}/{password}")]
 
@@ -74,6 +93,11 @@ namespace NewMazeAssignmentEx3Ap2.Controllers
 
 
 
+        /// <summary>
+        /// Gets the update winner.
+        /// </summary>
+        /// <param name="userName">Name of the user.</param>
+        /// <returns></returns>
         [HttpGet]
         [Route("api/Users/won/{userName}")]
         public async Task<IHttpActionResult> GetUpdateWinner(string userName)
@@ -94,6 +118,11 @@ namespace NewMazeAssignmentEx3Ap2.Controllers
         }
 
 
+        /// <summary>
+        /// Gets the update losr.
+        /// </summary>
+        /// <param name="userName">Name of the user.</param>
+        /// <returns></returns>
         [HttpGet]
         [Route("api/Users/lost/{userName}")]
         public async Task<IHttpActionResult> GetUpdateLosr(string userName)
@@ -115,6 +144,12 @@ namespace NewMazeAssignmentEx3Ap2.Controllers
 
 
         // PUT: api/Users/5
+        /// <summary>
+        /// Puts the user.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="user">The user.</param>
+        /// <returns></returns>
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutUser(string id, User user)
         {
@@ -150,6 +185,11 @@ namespace NewMazeAssignmentEx3Ap2.Controllers
         }
 
         // POST: api/Users
+        /// <summary>
+        /// Posts the user.
+        /// </summary>
+        /// <param name="user">The user.</param>
+        /// <returns></returns>
         [ResponseType(typeof(User))]
         public async Task<IHttpActionResult> PostUser(User user)
         {
@@ -187,6 +227,11 @@ namespace NewMazeAssignmentEx3Ap2.Controllers
         }
 
         // DELETE: api/Users/5
+        /// <summary>
+        /// Deletes the user.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         [ResponseType(typeof(User))]
         public async Task<IHttpActionResult> DeleteUser(string id)
         {
@@ -202,6 +247,10 @@ namespace NewMazeAssignmentEx3Ap2.Controllers
             return Ok(user);
         }
 
+        /// <summary>
+        /// Releases the unmanaged resources that are used by the object and, optionally, releases the managed resources.
+        /// </summary>
+        /// <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -211,6 +260,11 @@ namespace NewMazeAssignmentEx3Ap2.Controllers
             base.Dispose(disposing);
         }
 
+        /// <summary>
+        /// Users the exists.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         private bool UserExists(string id)
         {
             return db.Users.Count(e => e.Name == id) > 0;

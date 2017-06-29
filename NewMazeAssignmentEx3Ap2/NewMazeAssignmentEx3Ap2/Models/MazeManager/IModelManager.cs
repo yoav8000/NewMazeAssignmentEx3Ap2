@@ -8,6 +8,9 @@ using MazeLib;
 namespace NewMazeAssignmentEx3Ap2.Models.MazeManager
 {
 
+    /// <summary>
+    /// interface for the modeManager
+    /// </summary>
     public interface IModelManager
     {
         IEnumerable<Maze> GetAllMazes();

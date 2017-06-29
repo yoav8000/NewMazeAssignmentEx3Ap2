@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿<!-- The login page -->
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -9,17 +10,22 @@
 </head>
 <body>
     <form id="LoginForm" data-bind="submit: login">
+        <!-- The navbar of the page -->
         <div id="navBar"></div>
+        <!-- The body of the page -->
         <h1 style="margin-top:100px"> Log in</h1>
         <h2> Use local account to log in </h2>
         <hr />
         <label><strong> Username  </strong>  </label>
+        <!-- The user name input -->
         <input id="userName" class="RegisterInput" type="text" placeholder="User Name" data-bind="value:userName" name="user name" autocomplete="on" required />
 
         <br />
         <label><strong> Password </strong>  </label>
+        <!-- The password input-->
         <input id="password" class="RegisterInput" type="password" placeholder="Password" data-bind="value:password" name="password" autocomplete="off" required />
         <br />
+        <!-- The log in button-->
         <button id="LoginButton" type="submit">Login</button>
         <div class="loader" id="loader" hidden></div>
         <br />
@@ -27,6 +33,7 @@
         <a href="../RegistrationPage/Register.html">  Register as new user  </a>
 
     </form>
+    <!-- The scripts of the page -->
     <script src="../../Jquery/jquery-3.2.1.js"></script>
     <script src="../../Scripts/NavBarScript.js"></script>
     <script src="../../../Scripts/knockout-3.4.2.debug.js"></script>

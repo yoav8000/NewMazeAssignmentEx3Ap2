@@ -11,6 +11,11 @@ using MazeLib;
 namespace NewMazeAssignmentEx3Ap2.Controllers
 {
 
+    /// <summary>
+    /// the controller that works on SignalIR and take care community 
+    /// between the players
+    /// </summary>
+    /// <seealso cref="Microsoft.AspNet.SignalR.Hub" />
     [HubName("multiPlayerHub")]
     public class MultiplayerHub : Hub
     {
@@ -19,6 +24,12 @@ namespace NewMazeAssignmentEx3Ap2.Controllers
         private static IModel mazeModel = new Model();
 
 
+        /// <summary>
+        /// Starts the command.
+        /// </summary>
+        /// <param name="mazeName">Name of the maze.</param>
+        /// <param name="rows">The rows.</param>
+        /// <param name="cols">The cols.</param>
         public void StartCommand(string mazeName, int rows, int cols)
         {
             Players players = new Players();
@@ -27,6 +38,10 @@ namespace NewMazeAssignmentEx3Ap2.Controllers
             mazesToPlayersDic[mazeName] = players;
 
         }
+        /// <summary>
+        /// Joins the command.
+        /// </summary>
+        /// <param name="mazeName">Name of the maze.</param>
         public void JoinCommand(string mazeName)
         {
             Players players = mazesToPlayersDic[mazeName];
@@ -37,6 +52,9 @@ namespace NewMazeAssignmentEx3Ap2.Controllers
 
         }
 
+        /// <summary>
+        /// Lists the command.
+        /// </summary>
         public void ListCommand()
         {
             List<string> mazesList = mazeModel.GetNamesOfJoinableMazes();
@@ -47,6 +65,11 @@ namespace NewMazeAssignmentEx3Ap2.Controllers
         }
 
 
+        /// <summary>
+        /// Plays the command.
+        /// </summary>
+        /// <param name="mazeName">Name of the maze.</param>
+        /// <param name="direction">The direction.</param>
         public void PlayCommand(string mazeName, string direction)
         {
             string playerId = this.Context.ConnectionId;
